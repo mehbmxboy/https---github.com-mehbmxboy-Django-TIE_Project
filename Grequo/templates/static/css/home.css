@@ -1,0 +1,343 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: monospace;
+}
+
+/* background */
+
+.background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+/* Navbar container */
+
+.navbar {
+  overflow: visible;
+  background-color: rgb(46 45 74);
+  font-family: Arial;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: right;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.brand-name {
+  float: right;
+}
+
+/* The dropdown container */
+.user-dropdown {
+  float: right;
+}
+
+/* Dropdown button */
+.user-dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover,
+.user-dropdown:hover .dropbtn {
+  background-color: rgb(177, 172, 172);
+}
+
+/* Dropdown content*/
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 30px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.user-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* brand-name */
+.navbar span {
+  color: white;
+  font-size: 34px;
+}
+
+/* FEED */
+
+.feed {
+  width: 600px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.sectionOne {
+  background-color: #babccf6b;
+  border: 1px solid rgb(212 207 207);
+  width: 600px;
+  margin: 20px 3px;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.sectionOne div h2 {
+  margin-top: 0;
+}
+
+.modal-body a {
+  text-decoration: none;
+}
+
+.sectionOne div {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.sectionOne .modal-trigger {
+  padding: 10px 300px 10px 10px;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  margin: 20px;
+}
+
+.sectionOne h2 {
+  font-family: unset;
+  font-size: 30px;
+}
+
+/* displayQuestion-footer and votes */
+.displayQuestion-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.displayQuestion-footer a {
+  text-decoration: none;
+  color: rgb(104, 104, 104);
+  display: inline-flex;
+}
+
+.displayQuestion-footer span ion-icon {
+  font-size: 35px;
+}
+
+.displayQuestion-footer .up,
+.down {
+  font-size: 32px;
+}
+
+.displayQuestion-footer .up:hover {
+  color: rgb(60, 212, 22);
+}
+
+.displayQuestion-footer .down:hover {
+  color: red;
+}
+
+.displayQuestion-footer .date {
+  padding-top: 6px;
+}
+
+.displayQuestion-header .btn {
+  color: white;
+  background-color: rgb(119, 82, 116);
+}
+
+.displayQuestion-header .btn:hover,
+.displayQuestion-header .btn:active,
+.displayQuestion-header .btn:visited {
+  background-color: rgb(185, 147, 179);
+}
+
+/* ----- */
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: auto;
+  bottom: 0;
+  left: auto;
+}
+
+/* sectionTwo */
+
+.sectionTwo .displayQuestion {
+  background-color: #f3eee8;
+  border: 1px solid rgb(212 207 207);
+  width: 550px;
+  margin: 20px auto;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.displayQuestion div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.displayQuestion h3,
+h4 {
+  word-wrap: break-word;
+}
+
+.displayQuestion h4 {
+  font-size: 18px;
+  font-family: "Courier New", Courier, monospace;
+  color: rgba(47, 79, 79, 0.671);
+}
+
+.displayQuestion h3 {
+  font-size: 20px;
+  color: rgb(32, 32, 32);
+}
+
+.btn-success {
+  background-color: #7e177e;
+  border-color: #7e177e;
+  outline: none;
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success:visited {
+  background-color: rgb(107, 71, 107);
+  outline: none;
+}
+
+/* ------------------------- */
+/*FOOTER*/
+/* ------------------------- */
+
+footer {
+  background-color: rgb(98, 98, 98);
+  padding: 20px 25px;
+  font-size: 15px;
+  margin-top: 150px;
+}
+
+.footer-nav {
+  list-style: none;
+  float: left;
+}
+
+.social-icons {
+  list-style: none;
+  float: right;
+}
+
+.footer-nav li,
+.social-icons li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.footer-nav li:last-child,
+.social-icons li:last-child {
+  margin-right: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-icons li a:link,
+.social-icons li a:visited {
+  color: rgba(180, 180, 180, 0.945);
+  text-decoration: none;
+  border: none;
+  -webkit-transition: color 0.2s;
+  -o-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+  color: white;
+}
+
+.social-icons li a:link,
+.social-icons li a:visited {
+  font-size: 150%;
+}
+
+.fb-icon:hover,
+.twitter-icon:hover,
+.whatsapp-icon:hover,
+.ig-icon:hover {
+  -webkit-transform: scale(1.15);
+  -ms-transform: scale(1.15);
+  transform: scale(1.15);
+  -webkit-transition: color 0.2s, -webkit-transform 0.3s;
+  transition: color 0.2s, -webkit-transform 0.3s;
+  -o-transition: color 0.2s, transform 0.3s;
+  transition: color 0.2s, transform 0.3s;
+  transition: color 0.2s, transform 0.3s, -webkit-transform 0.3s;
+}
+
+.fb-icon:hover,
+.fb-icon:active {
+  color: #4267b2;
+}
+
+.twitter-icon:hover,
+.twitter-icon:active {
+  color: #1da1f2;
+}
+
+.whatsapp-icon:hover,
+.whatsapp-icon:active {
+  color: #25d366;
+}
+
+.ig-icon:hover,
+.ig-icon:active {
+  color: #c13584;
+}
+
+footer p {
+  color: rgb(155, 155, 155);
+  text-align: center;
+  margin-top: 30px;
+}

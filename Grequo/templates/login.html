@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="static/css/login.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Grequo-login</title>
+
+    <!-- Should add code for favicon here -->
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>Grequo</h1>
+      <span
+        >A place to share knowledge and better understand the world of Electric
+        Vehicles.</span
+      >
+    </div>
+    <div class="container" id="container">
+      <div class="form-container sign-up-container">
+        <form action="signup" name="signup-form" method="POST">
+          {% csrf_token %}
+          <h1>Create Account</h1>
+          <div class="social-container">
+            <a href="#" class="social">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+            <a href="#" class="social">
+              <ion-icon name="logo-google"></ion-icon>
+            </a>
+            <a href="#" class="social">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </div>
+          <span>or use your email for registration</span>
+          <input type="text" placeholder="First name" name="f_name" required />
+          <input type="text" placeholder="Last name" name="l_name" required />
+          <input type="text" placeholder="Username" name="username" required />
+          <input type="email" placeholder="Email" name="email" required />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            required
+          />
+          <button type="submit" name="btnform1">Sign Up</button>
+        </form>
+      </div>
+      <div class="form-container sign-in-container">
+        <form action="signup" name="login-form" method="POST">
+          {% csrf_token %}
+          <h1>Sign in</h1>
+          <div class="social-container">
+            <a href="#" class="social">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+            <a href="#" class="social">
+              <ion-icon name="logo-google"></ion-icon>
+            </a>
+            <a href="#" class="social">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </div>
+          <span>or use your account</span>
+          <input type="text" placeholder="username" name="username" required />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            required
+          />
+          <a class="forgot-password" href="#">Forgot your password?</a>
+          <button type="submit" name="btnform2">Sign In</button>
+        </form>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1>Welcome Back!</h1>
+            <p>
+              To keep connected with us please login with your personal info
+            </p>
+            <button class="ghost" id="signIn">Sign In</button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>Hello, Friend!</h1>
+            <p>Enter your personal details and start your journey with us</p>
+            <button class="ghost" id="signUp">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="static/js/login.js"></script>
+  </body>
+</html>

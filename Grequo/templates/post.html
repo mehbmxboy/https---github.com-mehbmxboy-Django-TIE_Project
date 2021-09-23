@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        font-family: monospace;
+      }
+      
+      /* background */
+      .background {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+      }
+      
+      /* Navbar container */
+      
+      .navbar {
+        overflow: visible;
+        background-color: rgb(46 45 74);
+        font-family: Arial;
+        margin-bottom: 0;
+        border-radius: 0;
+      }
+      
+      /* Links inside the navbar */
+      .navbar a {
+        float: right;
+        font-size: 16px;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      .brand-name {
+        float: right;
+      }
+      
+      /* The dropdown container */
+      .user-dropdown {
+        float: right;
+      }
+      
+      /* Dropdown button */
+      .user-dropdown .dropbtn {
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+      }
+      
+      .navbar a:hover,
+      .user-dropdown:hover .dropbtn {
+        background-color: rgb(177, 172, 172);
+      }
+      
+      /* Dropdown content*/
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 100px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+      
+      /* Links inside the dropdown */
+      .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 30px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+      }
+      
+      .dropdown-content a:hover {
+        background-color: #ddd;
+      }
+      
+      .user-dropdown:hover .dropdown-content {
+        display: block;
+      }
+      
+      /* brand-name */
+      .navbar span {
+        color: white;
+        font-size: 34px;
+      }
+      
+      .question-answer .displayQuestion {
+        background-color: #f3eee8b7;
+        border: 1px solid rgb(212 207 207);
+        width: 650px;
+        margin: 0 auto 5px auto;
+        border-radius: 10px;
+        padding: 10px 20px;
+      }
+      
+      .displayQuestion h2,
+      h4 {
+        word-wrap: break-word;
+      }
+      
+      .displayQuestion h4 {
+        font-size: 20px;
+        font-family: "Courier New", Courier, monospace;
+        color: rgba(47, 79, 79, 0.671);
+      }
+      
+      .displayQuestion-header {
+        display: flex;
+        justify-content: space-between;
+      }
+      
+      .displayQuestion-footer {
+        display: flex;
+        justify-content: right;
+      }
+      
+      .questionfooteranchor {
+        text-decoration: none;
+        color: rgb(104, 104, 104);
+        display: inline-flex;
+      }
+      
+      .questionfooteranchor ion-icon {
+        font-size: 35px;
+      }
+      
+      .questionfooteranchor .up:hover {
+        color: rgb(60, 212, 22);
+      }
+      
+      .questionfooteranchor .down:hover {
+        color: red;
+      }
+      
+      /* Buttons */
+      
+      .btn {
+        color: white;
+        background-color: rgb(119, 82, 116);
+      }
+      
+      .btn:hover,
+      .btn:active,
+      .btn:visited {
+        color: white;
+        background-color: rgb(185, 147, 179);
+        outline: none;
+        border: none;
+      }
+      
+      .btn-danger {
+        color: white;
+        background-color: rgb(188, 2, 2);
+        padding: 3px 5px;
+        outline: none;
+        border: none;
+      }
+      
+      .btn-danger:hover,
+      .btn-danger:active,
+      .btn-danger:visited {
+        outline: none;
+        border: none;
+        background-color: rgba(188, 2, 2, 0.767);
+      }
+      
+      /* modal */
+      .modal {
+        position: fixed;
+        margin: 100px 440px;
+      }
+      
+      .modal-body a {
+        text-decoration: none;
+      }
+      
+      .modal-footer {
+        padding: 15px;
+        text-align: center;
+        border-top: 1px solid #e5e5e5;
+      }
+      
+      /* ---- */
+      /* Display answer */
+      .displayAnswer h4 {
+        color: rgba(47, 79, 79, 0.671);
+      }
+      
+      .displayAnswer h3 {
+        font-size: 18px;
+      }
+      
+      .displayAnswer {
+        background-color: #e7e7e7;
+        border: 1px solid rgb(212 207 207);
+        width: 550px;
+        margin: 10px auto;
+        border-radius: 15px 50px 30px;
+        padding: 10px 20px;
+      }
+      
+      .displayAnswer-footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+      }
+      
+      .displayAnswer-footer a {
+        text-decoration: none;
+        color: rgb(104, 104, 104);
+        display: inline-flex;
+      }
+      
+      .displayAnswer-footer span ion-icon {
+        font-size: 35px;
+      }
+      
+      .displayAnswer-footer .up:hover {
+        color: rgb(60, 212, 22);
+      }
+      
+      .displayAnswer-footer .down:hover {
+        color: red;
+      }
+      
+      /* backarrow */
+      
+      .backArrow {
+        font-size: 35px;
+        margin: 10px 0 0 20px;
+        line-height: 29px;
+        width: 45px;
+        height: 45px;
+        padding: 5px 2px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        transform: rotate(180deg);
+        color: rgb(0, 0, 0);
+        border: 2px solid rgb(0, 0, 0);
+        border-radius: 50%;
+        -webkit-touch-callout: none;
+        -khtml-user-select: none;
+      }
+      
+      .backArrow:hover {
+        background: rgba(255, 255, 255, 0.5);
+      }
+      
+      .backArrow:active {
+        position: relative;
+        right: 2px;
+      }
+      
+    </style>
+    <title>Grequo</title>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <span>Grequo</span>
+      <div class="user-dropdown">
+        <button class="dropbtn">{{ request.user }}</button>
+        <div class="dropdown-content">
+          <a href="/logout">Logout</a>
+        </div>
+      </div>
+      <a href="/aboutus">About</a>
+      <a href="/">Home</a>
+    </div>
+
+    <div class="go-back">
+      <div class="backArrow"><a href="/" style="text-decoration: none;">&#10140;</a></div>
+    </div>
+  
+    {% for message in messages %}
+    <div
+      class="alert alert-{{ message.tags }} alert-dismissible fade show"
+      role="alert"
+    >
+      <strong>Message : </strong> {{ message }}
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+
+    <section class="question-answer">
+      <div class="displayQuestion">
+        <div class="displayQuestion-header">
+          <span>
+            <h4>{{question.author}}</h4>
+          </span>
+          <span
+            > {% if request.user == question.author %}
+            <a  class="btn btn-danger" href="{% url 'DeletePost' question.id %}">Delete</a></span
+          >{% endif %}
+        </div>
+        <h2>{{question.quest}}</h2>
+        <span>{{question.timestamp}}</span>
+        <div class="displayQuestion-footer">
+          <!-- Trigger the modal with a button -->
+          <button
+            type="button"
+            class="btn"
+            data-toggle="modal"
+            data-target="#myModal"
+          >
+            ADD ANSWER
+          </button>
+        </div>
+        <div>
+            <p class="votes">{{question.like_count}}</p>
+            <a class="questionfooteranchor" href="{% url 'LikePost' question.id %}">
+              <ion-icon class="up" name="arrow-up-circle"></ion-icon>
+            </a>
+            <a class="questionfooteranchor" href="{% url 'DislikePost' question.id %}">
+              <p class="votes">{{question.dislike_count}}</p>
+                <ion-icon class="down" name="arrow-down-circle"></ion-icon>
+            </a>
+        </div>
+      </div>
+      <!-- Modal -->
+      <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">
+                x
+              </button>
+              <h4 style="text-align: center">Reply to {{question.author}}</h4>
+            </div>
+            <form action="" method="POST">
+                {% csrf_token %}
+
+              <div class="modal-body">
+                  <input
+                    type="text"
+                    id="answerInput"
+                    name="yourcomment"
+                    placeholder="Enter your answer here...."
+                />
+              </div>
+
+              <div class="modal-footer">
+                <button
+                  type="submit"
+                  class="btn btn-success"
+                  id="buttonSubmitID"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {% for answer_list in answer_lists %}
+      <div class="displayAnswer">
+        <h4>{{answer_list.comment_author}}</h4>
+        <h3>
+            {{answer_list.comment}}        </h3>
+        <div class="displayAnswer-footer">
+          <span>{{answer_list.timestamp}}</span>
+
+          <span>
+            <!-- <a href="#">
+              <p class="votes">13</p>
+              <ion-icon class="up" name="arrow-up-circle"></ion-icon>
+              <ion-icon class="down" name="arrow-down-circle"></ion-icon>
+            </a> -->
+          </span>
+        </div>
+      </div>
+      {% endfor %}
+
+
+      <!-- --------------- -->
+      <!-- for demo -->
+      
+      </div>
+    </section>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <canvas class="background"></canvas>
+    <script src="static/particles.js-master/src/particles.js"></script>
+    <script >window.onload = function () {
+      Particles.init({
+        selector: ".background",
+      });
+    };
+    </script>
+  </body>
+</html>

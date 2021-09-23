@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="static/css/home.css" />
+  <title>HomePage</title>
+</head>
+
+<body>
+  <div class="navbar">
+    <span>Grequo</span>
+    <div class="user-dropdown">
+      <button class="dropbtn">{{ request.user }}</button>
+      <div class="dropdown-content">
+        <a href="/logout">Logout</a>
+      </div>
+    </div>
+    <a href="/aboutus">About</a>
+    <a href="/contactus">Contact Us</a>
+    <a href="/">Home</a>
+  </div>
+
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong>Message : </strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+
+  <!-- FEED -->
+  <div class="feed">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h4 class="modal-title">Hello !{{ request.user }},Ask a Question.</h4>
+      </div>
+      <form action="/" method="POST">
+        {% csrf_token %}
+        <div class="modal-body">
+          <input type="text" class="form-control" id="questionInput" name="question"
+            placeholder="Start your question with 'What','How','Why', etc." />
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success" id="buttonSubmitID">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <section class="sectionTwo">
+    {% for snips in snipps %}
+
+    <div class="displayQuestion">
+      <div class="displayQuestion-header">
+        <span>
+          <h4>{{snips.author}}</h4>
+        </span>
+        <a href="{% url 'GetUserPost' snips.id  %}"><button type="button" class="btn">Answers</button></a>
+      </div>
+      <h3>{{snips.quest}}</h3>
+      <div class="displayQuestion-footer">
+        <span class="date">{{snips.timestamp}}</span>
+        <!-- <span> -->
+        <div>
+          <p class="votes">{{snips.like_count}}</p>
+          <a href="{% url 'LikePost' snips.id %}">
+            <ion-icon class="up" name="arrow-up-circle"></ion-icon>
+          </a>
+          <p class="Downvotes">{{snips.dislike_count}}</p>
+          <a href="{% url 'DislikePost' snips.id %}">
+            <ion-icon class="down" name="arrow-down-circle"></ion-icon>
+          </a>
+        </div>
+        <!-- </span> -->
+      </div>
+    </div>
+    {% endfor %}
+
+
+    <footer>
+      <div class="row">
+        <div class="col span-1-of-2">
+          <ul class="footer-nav">
+            <li><a href="/aboutus">About us</a></li>
+            <li><a href="/contactus">Contact Us</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
+        </div>
+
+        <div class="col span-1-of-2">
+          <ul class="social-icons">
+            <li>
+              <a href="https://www.facebook.com" target="_blank">
+                <ion-icon class="fb-icon" name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com" target="_blank">
+                <ion-icon class="twitter-icon" name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+            <li>
+              <a href="https://web.whatsapp.com" target="_blank">
+                <ion-icon class="whatsapp-icon" name="logo-whatsapp"></ion-icon>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com" target="_blank">
+                <ion-icon class="ig-icon" name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <p>Copyright &copy; 2021 by Grequo. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <canvas class="background"></canvas>
+    <script src="static/particles.js-master/src/particles.js"></script>
+    <script src="static/js/home.js"></script>
+
+</body>
+
+</html>

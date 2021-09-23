@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static/css/contactus.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <video autoplay muted loop id="myVideo">
+      <source
+        src="https://vp.nyt.com/video/2021/02/12/91763_1_12ontech-electric-video_wg_720p.mp4"
+        type="video/mp4"
+      />
+    </video>
+    <section>
+      <div class="section-header">
+        <div class="container">
+          <h2>Contact Us</h2>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur
+            tenetur totam assumenda expedita quisquam repudiandae vitae
+            asperiores quasi error minima eaque ut tempora temporibus molestiae,
+            rerum, vel doloremque maxime sapiente.
+          </p>
+        </div>
+      </div>
+      <div class="backArrow">
+        <a href="/" style="text-decoration: none">&#10140;</a>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="contact-info">
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <ion-icon name="home"></ion-icon>
+              </div>
+
+              <div class="contact-info-content">
+                <h4>Address</h4>
+                <p>
+                  221B Baker Street<br />
+                  Marylebone, London, UK <br />NW1 6XE
+                </p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <ion-icon name="call"></ion-icon>
+              </div>
+
+              <div class="contact-info-content">
+                <h4>Phone</h4>
+                <p>020-7224-3688</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <ion-icon name="mail"></ion-icon>
+              </div>
+
+              <div class="contact-info-content">
+                <h4>Email</h4>
+                <p>grequo@ev.com</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form">
+            <form action="contactus" id="contact-form" method="POST">
+              <h2>Send Message</h2>
+              {% csrf_token %}
+              <div class="input-box">
+                <input
+                  type="text"
+                  required="true"
+                  name="name"
+                  placeholder="Full Name"
+                />
+              </div>
+
+              <div class="input-box">
+                <input
+                  type="email"
+                  required="true"
+                  name="email"
+                  placeholder="Email"
+                />
+              </div>
+
+              <div class="input-box">
+                <textarea
+                  required="true"
+                  name="message"
+                  placeholder="Type your Message..."
+                ></textarea>
+              </div>
+
+              <div class="input-box">
+                <input type="submit" value="Send" name="" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="static/js/contactus.js"></script>
+  </body>
+</html>
